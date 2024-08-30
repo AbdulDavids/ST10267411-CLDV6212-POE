@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CLDV6212_POE.Models.Document>
+
+@{
+    ViewBag.Title = "Documents";
+}
+
+<h2>Documents</h2>
+
+<p>
+    @Html.ActionLink("Upload New Document", "Upload")
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>File Name</th>
+        <th>Size</th>
+        <th>Upload Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FileName</td>
+            <td>@item.Size</td>
+            <td>@item.UploadDate</td>
+            <td>
+                @Html.ActionLink("Download", "Download", new { fileName = item.FileName })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

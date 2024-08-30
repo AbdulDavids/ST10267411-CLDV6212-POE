@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CLDV6212_POE.Models.Customer>
+
+@{
+    ViewBag.Title = "Search Customers";
+}
+
+<h2>Search Customers</h2>
+
+<form asp-action="Search" method="get">
+    <div class="form-group">
+        <label for="searchTerm">Search by Name:</label>
+        <input type="text" name="searchTerm" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Info</th>
+                <th>Product Data</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.ContactInfo</td>
+                    <td>@item.ProductData</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { partitionKey = item.PartitionKey, rowKey = item.RowKey }) |
+                        @Html.ActionLink("Delete", "Delete", new { partitionKey = item.PartitionKey, rowKey = item.RowKey })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No customers found.</p>
+}

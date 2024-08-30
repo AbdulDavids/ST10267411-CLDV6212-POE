@@ -1,0 +1,25 @@
+﻿@model CLDV6212_POE.Models.ProductImage
+
+@{
+    ViewBag.Title = "Delete Product Image";
+}
+
+<h2 class="my-4">Delete Product Image</h2>
+
+<div class="card mb-4">
+    <img src="@Model.Url" class="card-img-top" alt="@Model.FileName" style="max-height: 300px; object-fit: cover;" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.FileName</h5>
+        <p class="card-text"><small class="text-muted">Uploaded on @Model.UploadDate.ToString("yyyy-MM-dd HH:mm:ss")</small></p>
+    </div>
+</div>
+
+<div class="alert alert-danger" role="alert">
+    Are you sure you want to delete this image?
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="fileName" value="@Model.FileName" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Upload Document";
+}
+
+<h2>Upload Document</h2>
+
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Select file to upload:</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,118 @@
+﻿@model CLDV6212_POE.Models.Order
+
+@{
+    ViewBag.Title = "Create Order";
+}
+
+<h2 class="my-4">Create Order</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label for="CustomerId" class="form-label">Select Customer:</label>
+        <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(ViewBag.Customers, "RowKey", "Name"))" onchange="setCustomerName()"></select>
+        <input type="hidden" asp-for="CustomerName" id="CustomerName" />
+    </div>
+    <div id="product-list" class="mb-3">
+        <div class="row product-item mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Product Name:</label>
+                <input type="text" name="productNames" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Product Price:</label>
+                <input type="number" name="productPrices" class="form-control" required />
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary mb-3" onclick="addProduct()">Add Another Product</button>
+    <div class="mb-3">
+        <label for="Status" class="form-label">Status:</label>
+        <input type="text" asp-for="Status" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</form>
+
+@section Scripts {
+    <script>
+        function addProduct() {
+            const productItem = document.createElement('div');
+            productItem.className = 'row product-item mb-3';
+            productItem.innerHTML = `
+                <div class="col-md-6">
+                    <label class="form-label">Product Name:</label>
+                    <input type="text" name="productNames" class="form-control" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Product Price:</label>
+                    <input type="number" name="productPrices" class="form-control" required />
+                </div>
+            `;
+            document.getElementById('product-list').appendChild(productItem);
+        }
+
+        function setCustomerName() {
+            const customerDropdown = document.querySelector('select[name="CustomerId"]');
+            const selectedOption = customerDropdown.options[customerDropdown.selectedIndex];
+            document.getElementById('CustomerName').value = selectedOption.text;
+        }
+    </script>
+}
+
+<style>
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    h2 {
+        color: #343a40;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 0.25rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    .product-item {
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        background-color: #ffffff;
+    }
+
+    .product-item + .product-item {
+        margin-top: 1rem;
+    }
+
+    .mb-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .ms-2 {
+        margin-left: 0.5rem !important;
+    }
+</style>

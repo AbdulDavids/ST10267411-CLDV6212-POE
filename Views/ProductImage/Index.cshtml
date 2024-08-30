@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CLDV6212_POE.Models.ProductImage>
+
+@{
+    ViewBag.Title = "Product Images";
+}
+
+<h2 class="my-4">Product Images</h2>
+
+<div class="mb-4">
+    @Html.ActionLink("Upload New Image", "Upload", null, new { @class = "btn btn-primary" })
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="@item.Url" class="card-img-top" alt="@item.FileName" style="max-height: 300px; object-fit: cover;" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.FileName</h5>
+                    <p class="card-text"><small class="text-muted">Uploaded on @item.UploadDate.ToString("yyyy-MM-dd HH:mm:ss")</small></p>
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("Delete", "Delete", new { fileName = item.FileName }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    h2 {
+        color: #343a40;
+    }
+
+    .card {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .card-footer {
+        background-color: #f8f9fa;
+    }
+</style>

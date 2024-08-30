@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to ABC Retail</h1>
+        <p class="lead">This is your one-stop solution for managing customers, orders, product images, and documents.</p>
+        <hr class="my-4">
+        <p>Use the navigation links below to get started.</p>
+        <a class="btn btn-primary btn-lg mb-2" asp-controller="Customer" asp-action="Index" role="button">Customers</a>
+        <a class="btn btn-secondary btn-lg mb-2" asp-controller="Order" asp-action="Index" role="button">Orders</a>
+        <a class="btn btn-success btn-lg mb-2" asp-controller="ProductImage" asp-action="Index" role="button">Manage Products</a>
+        <a class="btn btn-info btn-lg mb-2" asp-controller="Document" asp-action="Index" role="button">Documents</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>About ABC Retail</h2>
+            <p>This application is designed to help you efficiently manage various aspects of your business, including customers, orders, product images, and documents. With an intuitive interface and powerful features, you can streamline your operations and improve productivity.</p>
+            <p>Made by ST10267411</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Features</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Customer Management</li>
+                <li class="list-group-item">Order Processing</li>
+                <li class="list-group-item">Product Image Uploads</li>
+                <li class="list-group-item">Document Handling</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    h1, h2 {
+        color: #343a40;
+    }
+
+    .jumbotron {
+        background-color: #e9ecef;
+        padding: 2rem 1rem;
+        border-radius: 0.3rem;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.75rem 1.25rem;
+        font-size: 1.25rem;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #5a9bd5;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #4a8cc7;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+        background-color: #f0ad4e;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #e09b3c;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-success {
+        background-color: #5cb85c;
+        color: #fff;
+    }
+
+    .btn-success:hover {
+        background-color: #4cae4c;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-info {
+        background-color: #d9534f;
+        color: #fff;
+    }
+
+    .btn-info:hover {
+        background-color: #c9302c;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+    .list-group-item {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+</style>
